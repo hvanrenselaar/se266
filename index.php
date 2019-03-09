@@ -12,9 +12,9 @@ and open the template in the editor.
     <body>
         <?php
         // put your code here
-        // phpinfo();
-        echo "hey";
-        echo "there";
+        phpinfo();
+        //echo "hey";
+        //echo "there";
         
         ?>
     </body>

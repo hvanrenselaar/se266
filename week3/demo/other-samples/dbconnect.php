@@ -6,10 +6,10 @@
  */  
 function getDatabase() {
     $config = array(
-        'DB_DNS' => 'mysql:host=localhost;port=3306;dbname=PHPClassWinter2017',
-        'DB_USER' => 'root',
-        'DB_PASSWORD' => ''
-    );
+            'DB_DNS' => 'mysql:host=ict.neit.edu;port=5500;dbname=se266_123456789',
+            'DB_USER' => 'se266_123456789',
+            'DB_PASSWORD' => '123456789'
+        );
 
     try {
         /* Create a Database connection and 

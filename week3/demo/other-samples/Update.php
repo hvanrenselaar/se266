@@ -37,9 +37,7 @@
                 if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
                    $results = $stmt->fetch(PDO::FETCH_ASSOC);
                 }
-                if ( !isset($id) ) {
-                    die('Record not found');
-                }
+               
                 $dataone = $results['dataone'];
                 $datatwo = $results['datatwo'];
             }

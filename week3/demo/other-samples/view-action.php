@@ -19,6 +19,7 @@
          * into the $db variable
          */
         $db = getDatabase();
+       
 
         /*
          * create a variable to hold the database

@@ -1,15 +1,11 @@
 <?php
-/**
- * Function to extablish a databse connection
- * 
- * @return PDO Object
- */  
+ 
 function dbconnect() {
-    $config = array(
-        'DB_DNS' => 'mysql:host=localhost;port=3306;dbname=PHPClassWinter2017',
-        'DB_USER' => 'root',
-        'DB_PASSWORD' => ''
-    );
+     $config = array(
+            'DB_DNS' => 'mysql:host=ict.neit.edu;port=5500;dbname=custommodels',
+            'DB_USER' => 'web_user',
+            'DB_PASSWORD' => 'web_password'
+        );
 
     try {
         /* Create a Database connection and 
@@ -21,7 +17,7 @@ function dbconnect() {
          * connection by setting the variable to null */
         $db = null;
         $message = $ex->getMessage();
-        include './includes/error.php';
+        
         exit();
     }
 

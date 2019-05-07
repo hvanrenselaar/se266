@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div><button id="ajaxButton" type="button">Make a request</button></div>
+    </body>
+</html>
+
+
+
+<script>
+(function() {
+  var httpRequest;
+  document.getElementById("ajaxButton").addEventListener('click', makeRequest);
+
+  function makeRequest() {
+    httpRequest = new XMLHttpRequest();
+
+    if (!httpRequest) {
+      alert('Giving up :( Cannot create an XMLHTTP instance');
+      return false;
+    }
+    httpRequest.onreadystatechange = alertContents;
+    // example 1. Return plain HTML
+    //httpRequest.open('GET', 'test.html');
+    // example 2. Return result from PHP script
+    //httpRequest.open('GET', 'test.php');
+    //httpRequest.send();
+    // example 3
+    
+    httpRequest.open('POST', 'test_post.php');
+    httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    httpRequest.send('userName1=' + encodeURIComponent("Super Man") + '&userName2=' + encodeURIComponent("Wonder Woman"));
+    
+    
+  }
+
+  function alertContents() {
+    if (httpRequest.readyState === XMLHttpRequest.DONE) {
+      if (httpRequest.status === 200) {
+        alert(httpRequest.responseText);
+        json = JSON.parse(httpRequest.responseText);
+        console.log (json);
+      } else {
+        alert('There was a problem with the request.');
+      }
+    }
+  }
+})();
+</script>

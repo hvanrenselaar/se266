@@ -21,7 +21,7 @@ function dbconnect() {
         $config = array(
             'DB_DNS' => 'mysql:host=ict.neit.edu;port=5500;dbname=se266_erik;',
             'DB_USER' => 'se266_erik',
-            'DB_PASSWORD' => '123456789'
+            'DB_PASSWORD' => 'erik'
         );
         
         

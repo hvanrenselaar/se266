@@ -29,27 +29,19 @@ and open the template in the editor.
       alert('Giving up :( Cannot create an XMLHTTP instance');
       return false;
     }
-    httpRequest.onreadystatechange = alertContents;
-    // example 1. Return plain HTML
-    //httpRequest.open('GET', 'test.html');
-    // example 2. Return result from PHP script
-    //httpRequest.open('GET', 'test.php');
-    //httpRequest.send();
-    // example 3
+    httpRequest.onreadystatechange = getRandomNumber;
     
-    httpRequest.open('POST', 'test_post.php');
-    httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    httpRequest.send('userName1=' + encodeURIComponent("Super Man") + '&userName2=' + encodeURIComponent("Wonder Woman"));
+    httpRequest.open('GET', 'takelong.php');
+   httpRequest.send();
     
     
   }
 
-  function alertContents() {
+  function getRandomNumber() {
     if (httpRequest.readyState === XMLHttpRequest.DONE) {
       if (httpRequest.status === 200) {
         alert(httpRequest.responseText);
-        json = JSON.parse(httpRequest.responseText);
-        console.log (json);
+       
       } else {
         alert('There was a problem with the request.');
       }

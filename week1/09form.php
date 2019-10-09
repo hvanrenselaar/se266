@@ -13,8 +13,9 @@
         </form>
         <?php
             var_dump ($_POST);
-            $number = $_POST['myNumber'] + 15;
+            print_r ($_POST);
             if (isset ($_POST['clickMe'])) {
+                $number = $_POST['myNumber'] + 15;
                 for ($i=0; $i<$number; $i++)
                 {
                     echo $i . "<br />";

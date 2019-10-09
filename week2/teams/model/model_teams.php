@@ -6,9 +6,7 @@
         global $db;
         
         $results = [];
-        $stmt = $db->prepare("SELECT id, teamName, division FROM teams");
-        $stmt->execute();
-        
+        $stmt = $db->prepare("SELECT id, teamName, division FROM teams");      
         
         if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
              $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -17,6 +15,8 @@
          
          return ($results);
     }
+    
+   
     
     function addTeam ($t, $d) {
         global $db;
@@ -34,7 +34,7 @@
         
         return ($results);
     }
-    
+   
     
 ?>
 

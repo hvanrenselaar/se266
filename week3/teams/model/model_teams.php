@@ -34,7 +34,23 @@
         return ($results);
     }
     
-    
+    function updateTeam ($id, $team, $division) {
+        global $db;
+        
+        $stmt = $db->prepare("UPDATE teams SET teamName = :team, division = :division WHERE id=:id");
+        $results = "";
+        $binds = array(
+            ":id" => $id,
+            ":team" => $team,
+            ":division" => $division
+        );
+            
+        if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
+            $results = 'Data Updated';
+        }
+        
+        return ($results);
+    }
     function deleteTeam ($id) {
         global $db;
         
@@ -52,24 +68,25 @@
         return ($results);
     }
     
-    function deleteTeams ($ids) {
+    function getTeam ($id) {
          global $db;
         
-        $result = "Data was not deleted";
-        $stmt = $db->prepare("DELETE FROM teams WHERE id IN (:ids)");
-        
+        $result = [];
+        $stmt = $db->prepare("SELECT id, teamName, division FROM teams WHERE id=:id");
         $binds = array(
-            ":ids" => $ids
+            ":id" => $id
         );
-            
-        if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
-            $result = $stmt->rowCount() . " row(s) deleted";
-        }
-        
-        return ($result);
+       
+        if ( $stmt->execute($binds) && $stmt->rowCount() > 0 ) {
+             $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                        
+         }
+         
+         return ($result);
     }
     
-    $r = deleteTeams ("8,9");
+ 
+    
     
 ?>
 

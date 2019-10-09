@@ -29,9 +29,10 @@
     <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
+                 
                     <th>Team Name</th>
                     <th>Division</th>
+                    <th>Edit</th>
                 </tr>
             </thead>
             <tbody>
@@ -40,24 +41,23 @@
             <?php foreach ($teams as $row): ?>
                 <tr>
                     <td>
-                        <form action="view.php" method="post">
-                            <input type="text" name="teamId" value="<?php echo $row['id']; ?>" />
-                            <button class="btn glyphicon glyphicon-trash" type="submit"><?php echo $row['id']; ?></button>
-                            
+                        
+                            <form action="view.php" method="post">
+                            <input type="hidden" name="teamId" value="<?php echo $row['id']; ?>" />
+                            <button class="btn glyphicon glyphicon-trash" type="submit"></button>
+                            <?php echo $row['teamName']; ?>
                         </form>
-                           
-                  
-                    </td>
+                   </td>
+                    <td><?php echo $row['division']; ?></td> 
+                    <td><a href="editTeam.php?action=update&teamId=<?php echo $row['id']; ?>">Edit</a></td> 
                     
-                    <td><?php echo $row['teamName']; ?></td>
-                    <td><?php echo $row['division']; ?></td>            
                 </tr>
             <?php endforeach; ?>
             </tbody>
         </table>
         
         <br />
-        <a href="addTeam.php">Add Team</a>
+        <a href="editTeam.php?action=add">Add Team</a>
     </div>
     </div>
 </body>

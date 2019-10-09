@@ -34,9 +34,9 @@
         ?>
         
        <table border="1">
-        <?php for($tr = 1; $tr <= 3; $tr++):?>
+        <?php for($tr = 1; $tr <= 5; $tr++):?>
             <tr> 
-            <?php for($td = 1; $td <= 3; $td++):?>
+            <?php for($td = 1; $td <= 8; $td++):?>
                 <td> <?php echo $td; ?> </td>
             <?php endfor; ?>                
             </tr>

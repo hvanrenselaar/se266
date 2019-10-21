@@ -56,8 +56,8 @@
     
   <h2>Add Team</h2>
   <form class="form-horizontal" action="editTeam.php" method="post">
-      <input type="hidden" name="action" value="<?php echo $action; ?>">
-      <input type="hidden" name="teamId" value="<?php echo $id; ?>">
+      <input type="text" name="action" value="<?php echo $action; ?>">
+      <input type="text" name="teamId" value="<?php echo $id; ?>">
       
     <div class="form-group">
       <label class="control-label col-sm-2" for="team name">Team Name:</label>

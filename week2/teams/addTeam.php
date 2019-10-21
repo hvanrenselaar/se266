@@ -4,6 +4,7 @@
         include __DIR__ . '/functions.php';
        if (isPostRequest()) {
            $team = filter_input(INPUT_POST, 'team');
+           $team = $_POST['team'];
            $division = filter_input(INPUT_POST, 'division');
            $result = addTeam ($team, $division);
            

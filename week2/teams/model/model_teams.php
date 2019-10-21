@@ -6,7 +6,7 @@
         global $db;
         
         $results = [];
-        $stmt = $db->prepare("SELECT id, teamName, division FROM teams");      
+        $stmt = $db->prepare("SELECT id, teamName, division FROM teams ORDER BY id DESC");      
         
         if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
              $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -16,7 +16,6 @@
          return ($results);
     }
     
-   
     
     function addTeam ($t, $d) {
         global $db;
@@ -35,6 +34,9 @@
         return ($results);
     }
    
+    $teams = getTeams();
+    var_dump ($teams);
     
+
 ?>
 

@@ -85,8 +85,11 @@
          return ($result);
     }
     
- 
-    
+  
+  //$t = updateTeam (24, 'NY Jets', 'AFC East');
+  $t = getTeam(1);
+  //echo $t['teamName'];
+    //var_dump ($t);
     
 ?>
 

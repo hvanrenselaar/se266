@@ -126,7 +126,6 @@
   }
   
     
-  $teams = sortTeams('teamName', 'DESC');
-  var_dump ($teams);
+
 ?>
 

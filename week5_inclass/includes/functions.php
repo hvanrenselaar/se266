@@ -7,7 +7,6 @@ function getCharacters ()
     return ($characters);
 }
 
-$names = getCharacters();
-var_dump ($names);
+
 
 ?>

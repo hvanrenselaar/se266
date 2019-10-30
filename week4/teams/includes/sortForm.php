@@ -4,7 +4,7 @@
        <select name="fieldName">
               <option value="">Select One</option>
               <option value="teamName">Team Name</option>
-              <option value="divission">Division</option>
+              <option value="division">Division</option>
               
           </select>
        <input type="radio" name="fieldValue" value="ASC" checked />Ascending

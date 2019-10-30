@@ -93,14 +93,14 @@
       $stmt = $db->prepare("SELECT * FROM test WHERE $column LIKE :search");
 
            
-      
+       
         $results = [];
         $stmt = $db->prepare("SELECT id, teamName, division FROM teams WHERE $column LIKE :search");
         $search = '%'.$searchValue.'%';
         $binds = array(
               ":search" => $search
         );
-
+        
         if ( $stmt->execute($binds) && $stmt->rowCount() > 0 ) {
              $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -109,11 +109,14 @@
          return ($results);
   }
   
+  
+  
   function sortTeams ($column, $order) {
       
        global $db;
         
         $results = [];
+        
         $stmt = $db->prepare("SELECT id, teamName, division FROM teams ORDER BY $column $order");
      
         
@@ -125,7 +128,14 @@
          return ($results);
   }
   
-    
+  function getFieldNames () {
+      $fieldNames = ['teamName', 'division'];
+      
+      return ($fieldNames);
+      
+  }
 
+  $names = getFieldNames();
+  var_dump ($names);
 ?>
 

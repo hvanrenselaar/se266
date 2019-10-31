@@ -3,6 +3,7 @@
 include __DIR__ . '/includes/functions.php';
 
 $names = getCharacters();
+
 ?>
 
 <ul>

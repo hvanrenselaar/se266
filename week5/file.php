@@ -1,12 +1,13 @@
 <?php
+
+//$names = file('names.txt');
+//print_r ($names); // shows an array
+
 /*
-$names = file('names.txt');
-print_r ($names); // shows an array
-exit;
 $file = fopen ('names.txt', 'rb');
 while (!feof($file)) {
    $name = fgets ($file);
-   echo ($name) . "<br />";
+   echo $name . "*** <br />";
 }
 */
 

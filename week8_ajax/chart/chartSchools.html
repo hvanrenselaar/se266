@@ -23,6 +23,63 @@
 
 <script>
     
+    (function() {
+    
+  
+  
+
+  async function makeRequest() {
+    const url = 'schools.php';
+    
+    try {
+      const response = await fetch(url, {
+        method: 'POST', 
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      const schools = await response.json();
+      
+      new Chart(document.getElementById("myChart"), {
+                type: 'bar',
+                data: {
+                  labels: schools[0],
+                  datasets: [
+                    {
+                      label: "Number of Schools",
+                      backgroundColor: schools[2],
+                      data: schools[1],
+                      borderWidth: 10
+                    }
+                  ]
+                },
+                options: {
+                  legend: { display: true },
+                  title: {
+                    display: true,
+                    text: 'Number of Schools By State'
+                  },
+                  scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero:true
+                            }
+                        }]
+                    }
+                }
+            });
+      
+    } catch (error) {
+        console.error (error);
+     
+    }
+  }
+  makeRequest();
+  
+    })();
+    
+    /*
+    
     $(document).ready(function () {
         
         $.get ("schools.php", function (data) {
@@ -64,4 +121,6 @@
         
         
     })
+     * 
+     */
  </script>

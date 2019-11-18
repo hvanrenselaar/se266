@@ -5,6 +5,7 @@
  * go.  Create as many functions needed.  
  */
 
+//include 'dbconnect.php';
 function getAllTestData(){
     $db = dbconnect();
            
@@ -16,6 +17,7 @@ function getAllTestData(){
      }
     return $results;
 }
+
 
 
 function readTestData($id){
@@ -33,3 +35,8 @@ function readTestData($id){
      }
     return $row;
 }
+
+//$test_data = getAllTestData();
+//var_dump ($test_data);
+//$row = readTestData (1);
+//var_dump ($row);

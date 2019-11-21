@@ -39,7 +39,7 @@
         }
       });
       const schools = await response.json();
-      
+      console.log (schools);
       new Chart(document.getElementById("myChart"), {
                 type: 'bar',
                 data: {

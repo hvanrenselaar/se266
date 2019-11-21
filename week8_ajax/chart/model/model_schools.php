@@ -18,5 +18,7 @@
         return ($schools);
     }
     
-
+    $schools = getSchoolSummaryInfo();
+    
+    echo json_encode($schools);
  ?>

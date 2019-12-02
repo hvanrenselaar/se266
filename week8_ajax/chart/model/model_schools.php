@@ -20,5 +20,5 @@
     
     $schools = getSchoolSummaryInfo();
     
-    echo json_encode($schools);
+    //echo json_encode($schools);
  ?>

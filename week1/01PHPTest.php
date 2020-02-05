@@ -5,7 +5,7 @@
         <title></title>
     </head>
     <body>
-		<h1>PHP Info</h1>
+		<h1>PHP Info - updated</h1>
         <?php
        
         phpinfo();

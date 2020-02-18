@@ -1,0 +1,68 @@
+
+<html>
+    <head>
+        <title>Teams Ajax Example</title>
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div id="main">
+            <table class="table table-striped" id="teamsTable">
+                <thead>
+                    <tr>
+
+                        <th>Team Name</th>
+                        <th>Division</th>
+                        <th>Edit</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+
+<script>
+    function displayTable (teams) {
+        console.log(teams);
+        let tableRef = document.getElementById("teamsTable");
+        for (i=0; i<teams.length; i++) {
+            // Insert a row at the end of the table
+            let newRow = tableRef.insertRow(-1);
+
+            // Insert a cell in the row at index 0
+            let newCell = newRow.insertCell(0);
+            // Append a text node to the cell
+            let newText = document.createTextNode('First Cell');
+            newCell.appendChild(newText);
+
+            // Insert a cell in the row at index 0
+            let newCell2 = newRow.insertCell(1);
+            // Append a text node to the cell
+            let newText2 = document.createTextNode('second cell');
+            newCell2.appendChild(newText2); 
+        }
+       
+        
+    }
+    window.addEventListener('load', loadPage);
+    async function loadPage (event) {
+        const url = 'getTeams.php';
+    
+        try {
+            const response = await fetch(url, {
+              method: 'GET'
+            });
+            const json = await response.json();
+            displayTable (json);
+            
+          } catch (error) {
+              console.error (error);
+
+          }
+    }
+</script>
+
+    </body>
+</html>

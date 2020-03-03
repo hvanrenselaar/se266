@@ -15,11 +15,27 @@
         border: 1px solid;
       }
       .day {font-weight: bold;}
+      #add_shift {
+          font-size: 1.25em;
+          width: 200px;
+      }
  </style>
 </head>
 <body>
 
-     <h2>Edit Schedule</h2>
+     
+     <div style="margin-left:50px;">
+       <h2>Edit Schedule</h2>
+       <label>Select Employee</label>
+      <select id="person">
+          <option value="0">Mickey Mouse</option>
+          <option value="1">Donald Duck</option>
+          <option value="2">Goofy</option>
+          <option value="3">Minnie Mouse</option>
+      </select>
+          
+      
+  </div>
 <div class="wrapper">
    
   <div>
@@ -65,21 +81,33 @@
       <input type="checkbox" name="shifts" data-day="6" data-shift="3">Dinner
   </div>
  
-  <div>
-      <span class="day">Select Employee</span><br /><br />
-      <select id="person">
-          <option value="0">Mickey Mouse</option>
-          <option value="1">Donald Duck</option>
-          <option value="2">Goofy</option>
-          <option value="3">Minnie Mouse</option>
-       
-          
-      </select><br /> <br />
-      <input type="button" value="Enter Shift" id="add_shift">
-      <br />
-  </div>
+  
 </div>
-
+   
+     <div style="margin-left:50px; font-size:1.5em; margin-top:20px; width: 1000px;">
+      <input type="button" value="Enter Shift" id="add_shift">
+      <hr />
+     </div>
+      <div class="wrapper">
+        <?php
+            $days = array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday");
+            foreach ($days as $d) {
+        ?>
+        <div><span class="day"><?php echo $d;?></span></div>
+        
+            <?php } ?>
+    </div>
+    
+     <div class="wrapper">
+        <?php
+            $days = array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday");
+            foreach ($days as $d) {
+        ?>
+        <div style="height:100px;"><span class="day"><?php echo $d;?></span><br /><span class="day">Breakfast</span></div>
+        
+            <?php } ?>
+    </div>
+    
 </body>
 </html>
 <script>

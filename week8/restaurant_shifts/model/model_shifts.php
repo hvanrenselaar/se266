@@ -65,7 +65,6 @@
      function deleteShift ($employee_id, $shift, $day) {
         global $db;
         
-        // check if this is a duplicate
         
         $binds = array(
             ":id" => $employee_id,
@@ -82,7 +81,6 @@
         
         return (false);
     }   
-   
     
     
 ?>

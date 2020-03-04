@@ -150,7 +150,7 @@
         var shift = e.target.dataset.shift;
         var day = e.target.dataset.day;
         var personId = e.target.dataset.personId;
-        deleteOneShift(shift,day, personId).then (function() {
+        deleteOneShift(day, shift, personId).then (function() {
             e.target.remove();
         })
         

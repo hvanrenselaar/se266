@@ -123,16 +123,69 @@
 </html>
 <script>
     const button = document.querySelector('#add_shift');
-    button.addEventListener('click', addShift);
+    button.addEventListener('click', addShifts);
+    window.addEventListener('load', loadPage);
     
     function deleteShift (e) {
+        
         var shift = e.target.dataset.shift;
         var day = e.target.dataset.day;
         var personId = e.target.dataset.personId;
-        var personName = e.target.dataset.personName;
+        deleteOneShift(shift,day, personId).then (function() {
+            e.target.remove();
+        })
         
-        e.target.remove();
         
+        
+    }
+    
+    async function deleteOneShift (day, shift, id) {
+        const url = 'ajax_shifts.php';
+        const data = { day: day, id: id, shift: shift, action: "delete" };
+
+        try {
+          const response = await fetch(url, {
+            method: 'POST', 
+            body: JSON.stringify(data), 
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          });
+          const deleted = await response.json();
+          if (deleted) {
+              return (true);
+          }
+          
+         
+        } catch (error) {
+            
+            console.error (error);
+            return (false);
+
+        }
+    }
+    
+    async function addOneShift (day, shift, id, name) {
+        const url = 'ajax_shifts.php';
+        const data = { day: day, id: id, shift: shift, action: "add" };
+
+        try {
+          const response = await fetch(url, {
+            method: 'POST', 
+            body: JSON.stringify(data), 
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          });
+          const added = await response.json();
+          if (added) {
+              addPersonToDOM (day, shift, id, name);
+          }
+         
+        } catch (error) {
+            console.error (error);
+
+        }
     }
     function addPersonToDOM (day, shift, id, name) {
         var div = document.getElementById("shift_" + day + "_" + shift);
@@ -147,7 +200,7 @@
         node.addEventListener('click', deleteShift);
         div.appendChild(node); 
     }
-    function addShift () {
+    function addShifts () {
         // selected person
         var person = document.getElementById("person");
         var personIndex = person.selectedIndex;
@@ -157,10 +210,27 @@
         for(var i = 0; i < shifts.length; i++)
         {
             if(shifts[i].checked) {
-                addPersonToDOM (shifts[i].dataset.day, shifts[i].dataset.shift, personId, personName);
-                
+                addOneShift (shifts[i].dataset.day, shifts[i].dataset.shift, personId, personName);
+                shifts[i].checked = false;
+            }    
+        }
+    }
+    
+     async function loadPage (event) {
+        const url = 'getShifts.php';
+    
+        try {
+            const response = await fetch(url, {
+              method: 'GET'
+            });
+            const json = await response.json();
+            for (i=0; i<json.length; i++) {
+                addPersonToDOM (json[i].shiftDay, json[i].shiftNumber, json[i].employeeId,json[i].employeeName  )
             }
             
-        }
+          } catch (error) {
+              console.error (error);
+
+          }
     }
 </script>
